@@ -73,7 +73,15 @@ const Input = styled.input`
     width: 100%;
     outline: none;
     font-size: 18px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    display: flex;
+`;
+
+const Plus = styled.div`
+    flex: 1;
+    color: #343a40;
+    font-size: 24px;
+    cursor: pointer;
 `;
 
 const TodoCreate = ({onInsert}) => {
