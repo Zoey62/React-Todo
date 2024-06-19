@@ -68,7 +68,7 @@ const App = () => {
   return (
     <>
         <TodoProvider>
-      <GlobalStyle />
+          <GlobalStyle />
             <TodoTemplate>
                 <TodoHead />
                 <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>

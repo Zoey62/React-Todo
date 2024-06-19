@@ -18,22 +18,24 @@ const TodoHeadBlock = styled.div`
         color: #868e96;
         font-size: 21px;
     }
-    //.tasks-left {
-    //    color: #20c997;
-    //    font-size: 18px;
-    //    margin-top: 40px;
-    //    font-weight: bold;
-    //}
+    .tasks-left {
+        color: #20c997;
+        font-size: 18px;
+        margin-top: 40px;
+        font-weight: bold;
+    }
 `;
 
 const TodoHead = () => {
     const todos = useTodoState();
+    const undoneTasks = todos.filter(todo => !todo.done); // done == false
     console.log(todos);
+
     return (
         <TodoHeadBlock>
             <h1>TODO LIST</h1>
             <div className="day">{getToday()}</div>
-            {/*<div className="tasks-left">할 일 3개 남음</div>*/}
+            <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
         </TodoHeadBlock>
     );
 }
