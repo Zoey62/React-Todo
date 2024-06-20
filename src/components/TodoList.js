@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import TodoItem from "./TodoItem";
+import {useTodoState} from "./TodoContext";
 
 const TodoListBlock = styled.div`
     flex: 1;
@@ -9,8 +10,10 @@ const TodoListBlock = styled.div`
     overflow-y: auto;
 `;
 
-const TodoList = ({ todos, onRemove, onToggle }) => {
+const TodoList = () => {
+    const todos = useTodoState();
     console.log(todos);
+
     return (
         <TodoListBlock>
             {/*<TodoItem text="프로젝트 생성하기" done={true} />*/}
@@ -18,7 +21,7 @@ const TodoList = ({ todos, onRemove, onToggle }) => {
             {/*<TodoItem text="Context 만들기" done={false} />*/}
             {/*<TodoItem text="기능 구현하기" done={false} />*/}
             {todos.map((todo) => (
-                <TodoItem text={todo.text} done={todo.checked} id={todo.id} onRemove={onRemove} onToggle={onToggle} />
+                <TodoItem id={todo.id} text={todo.text} done={todo.checked} />
             ))}
         </TodoListBlock>);
 }

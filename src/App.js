@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const App = () => {
-  const [todos, setTodos] = useState([
+  /*const [todos, setTodos] = useState([
       {
           id: 1,
           text: "할 일 1",
@@ -63,19 +63,19 @@ const App = () => {
           );
       },
       [todos],
-  );
+  );*/
 
   return (
-    <>
+    // <>
         <TodoProvider>
           <GlobalStyle />
             <TodoTemplate>
                 <TodoHead />
-                <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle}/>
-                <TodoCreate onInsert={onInsert} />
+                <TodoList />
+                <TodoCreate />
             </TodoTemplate>
         </TodoProvider>
-    </>
+    // </>
   );
 }
 

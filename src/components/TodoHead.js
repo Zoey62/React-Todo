@@ -28,13 +28,26 @@ const TodoHeadBlock = styled.div`
 
 const TodoHead = () => {
     const todos = useTodoState();
-    const undoneTasks = todos.filter(todo => !todo.done); // done == false
+    const undoneTasks = todos.filter(todo => !todo.checked); // done == false
+    console.log("undoneTasks ", undoneTasks);
     console.log(todos);
+
+    const today = new Date();
+
+    const dateString = today.toLocaleDateString('ko-KR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long'});
+
+    console.log(dateString);
+    console.log(dayName);
 
     return (
         <TodoHeadBlock>
-            <h1>TODO LIST</h1>
-            <div className="day">{getToday()}</div>
+            <h1>{dateString}</h1>
+            <div className="day">{dayName}</div>
             <div className="tasks-left">할 일 {undoneTasks.length}개 남음</div>
         </TodoHeadBlock>
     );

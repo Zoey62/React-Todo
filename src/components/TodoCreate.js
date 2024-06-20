@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from "react";
 import styled, { css } from "styled-components";
 import { MdAdd } from 'react-icons/md';
+import {useTodoDispatch, useTodoNextId} from "./TodoContext";
 
 const CircleButton = styled.button`
     background: #38d9a9;
@@ -89,7 +90,26 @@ const TodoCreate = ({onInsert}) => {
     // const onToggle = () => setOpen(!open);
     const [value, setValue] = useState('');
 
-    const onChange = useCallback((e) => {
+    const dispatch = useTodoDispatch();
+    const nextId = useTodoNextId();
+
+    // const onToggle = () => setOpen(!open);
+    const onChange = e => setValue(e.target.value);
+    const onSubmit = e => {
+        e.preventDefault();
+        dispatch({
+            type: 'CREATE',
+            todo: {
+                id: nextId.current,
+                text: value,
+                done: false,
+            }
+        });
+        setValue('');
+        nextId.current += 1;
+    }
+
+    /*const onChange = useCallback((e) => {
         setValue(e.target.value);
     }, []);
 
@@ -101,7 +121,7 @@ const TodoCreate = ({onInsert}) => {
             e.preventDefault();
         },
         [onInsert, value],
-    )
+    )*/
 
     return (
         <>
@@ -124,4 +144,4 @@ const TodoCreate = ({onInsert}) => {
     )
 }
 
-export default TodoCreate;
+export default React.memo(TodoCreate);
