@@ -28,9 +28,9 @@ const TodoHeadBlock = styled.div`
 
 const TodoHead = () => {
     const todos = useTodoState();
-    const undoneTasks = todos.filter(todo => !todo.checked); // done == false
-    console.log("undoneTasks ", undoneTasks);
-    console.log(todos);
+    const undoneTasks = todos.filter(todo => !todo.done); // done == false
+    // console.log("undoneTasks ", undoneTasks);
+    // console.log(todos);
 
     const today = new Date();
 
@@ -41,8 +41,7 @@ const TodoHead = () => {
     });
     const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long'});
 
-    console.log(dateString);
-    console.log(dayName);
+    console.log(dateString, dayName);
 
     return (
         <TodoHeadBlock>

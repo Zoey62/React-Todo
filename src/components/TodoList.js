@@ -21,9 +21,10 @@ const TodoList = () => {
             {/*<TodoItem text="Context 만들기" done={false} />*/}
             {/*<TodoItem text="기능 구현하기" done={false} />*/}
             {todos.map((todo) => (
-                <TodoItem id={todo.id} text={todo.text} done={todo.checked} />
+                <TodoItem id={todo.id} text={todo.text} done={todo.done} />
             ))}
-        </TodoListBlock>);
+        </TodoListBlock>
+    );
 }
 
 export default TodoList;

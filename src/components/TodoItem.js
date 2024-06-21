@@ -59,6 +59,7 @@ const Text = styled.div`
 `;
 
 const TodoItem = ({ id, done, text }) => {
+    // console.log(id, done, text);
     const dispatch = useTodoDispatch();
     const onToggle = () => dispatch({ type: 'TOGGLE', id });
     const onRemove = () => dispatch({ type: 'REMOVE', id });

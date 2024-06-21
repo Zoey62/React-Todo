@@ -4,21 +4,22 @@ const initialTodos = [
     {
         id: 1,
         text: "할 일 1",
-        checked: true,
+        done: true,
     },
     {
         id: 2,
         text: "할 일 2",
-        checked: true,
+        done: true,
     },
     {
         id: 3,
         text: "할 일 3",
-        checked: false,
+        done: false,
     },
 ];
 
 const todoReducer = (state, action) => {
+    console.log(state);
     switch (action.type) {
         case 'CREATE':
             return state.concat(action.todo);
@@ -40,7 +41,7 @@ const TodoNextIdContext = createContext();
 export const TodoProvider = ({children}) => {
     const [state, dispatch] = useReducer(todoReducer, initialTodos);
     const nextId = useRef(4);
-    console.log(children);
+    // children ?
     return (
         <TodoStateContext.Provider value={state}>
             <TodoDispatchContext.Provider value={dispatch}>
