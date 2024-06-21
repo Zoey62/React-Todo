@@ -78,13 +78,6 @@ const Input = styled.input`
     display: flex;
 `;
 
-const Plus = styled.div`
-    flex: 1;
-    color: #343a40;
-    font-size: 24px;
-    cursor: pointer;
-`;
-
 const TodoCreate = ({onInsert}) => {
     // const [open, setOpen] = useState(false);
     // const onToggle = () => setOpen(!open);
@@ -93,7 +86,6 @@ const TodoCreate = ({onInsert}) => {
     const dispatch = useTodoDispatch();
     const nextId = useTodoNextId();
 
-    // const onToggle = () => setOpen(!open);
     const onChange = e => setValue(e.target.value);
     const onSubmit = e => {
         e.preventDefault();
@@ -108,20 +100,6 @@ const TodoCreate = ({onInsert}) => {
         setValue('');
         nextId.current += 1;
     }
-
-    /*const onChange = useCallback((e) => {
-        setValue(e.target.value);
-    }, []);
-
-    const onSubmit = useCallback(
-        (e) => {
-            onInsert(value);
-            setValue('');
-
-            e.preventDefault();
-        },
-        [onInsert, value],
-    )*/
 
     return (
         <>

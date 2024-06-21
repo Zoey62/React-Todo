@@ -10,7 +10,7 @@ const Remove = styled.div` // 휴지통 버튼
     color: #dee2e6;
     font-size: 24px;
     cursor: pointer;
-    &:hover { // 마우스 갖다대면 빨간색
+    &:hover { // 마우스 갖다대면
         color: #ff6b6b;
     }
     display: none;
