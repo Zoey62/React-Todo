@@ -79,16 +79,16 @@ const Input = styled.input`
 `;
 
 const TodoCreate = ({onInsert}) => {
-    // const [open, setOpen] = useState(false);
-    // const onToggle = () => setOpen(!open);
+    const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
-
+    const [doneValue, setDoneValue] = useState(false);
     const dispatch = useTodoDispatch();
-    const nextId = useTodoNextId();
 
+    const nextId = useTodoNextId();
+    const onToggle = () => setOpen(!open);
     const onChange = e => setValue(e.target.value);
     const onSubmit = e => {
-        e.preventDefault();
+        e.preventDefault(); // 새로고침 방지
         dispatch({
             type: 'CREATE',
             todo: {
@@ -98,26 +98,43 @@ const TodoCreate = ({onInsert}) => {
             }
         });
         setValue('');
+        setOpen(false);
         nextId.current += 1;
+    }
+    const getDoneList = () => {
+        setDoneValue(true);
+        console.log(doneValue);
     }
 
     return (
         <>
-            {/*{open && (*/}
+            {open && (
                 <InsertFormPositioner>
                     <InsertForm onSubmit={onSubmit}>
-                        <Input autoFocus placeholder="할 일을 입력하세요."
-                        value={value} onChange={onChange}
+                        <Input autoFocus
+                               placeholder="할 일을 입력 후, Enter를 누르세요."
+                               value={value}
+                               onChange={onChange}
                         />
-                        <button type="submit">
-                            <MdAdd />
+                        <button type="button" onClick={getDoneList}>
+                            완료
                         </button>
+                        <button type="button">
+                            미완료
+                        </button>
+                        <button type="button">
+                            clear
+                        </button>
+                        {/*<button type="submit">
+                            <MdAdd/>
+                        </button>*/}
                     </InsertForm>
                 </InsertFormPositioner>
-            {/*)}*/}
-            {/*<CircleButton onClick={onToggle} open={open}>
+            )}
+            <CircleButton onClick={onToggle} open={open}>
+                {/*요 부분에 필터기능 넣기*/}
                 <MdAdd />
-            </CircleButton>*/}
+            </CircleButton>
         </>
     )
 }
