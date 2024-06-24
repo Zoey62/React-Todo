@@ -105,6 +105,12 @@ const TodoCreate = ({onInsert}) => {
         setDoneValue(true);
         console.log(doneValue);
     }
+    const onFilter = (mode) => {
+        if (mode === 'done')
+            dispatch({ type: 'DONE' });
+        else if (mode === 'undone')
+            dispatch({ type: 'UNDONE' });
+    }
 
     return (
         <>
@@ -116,10 +122,10 @@ const TodoCreate = ({onInsert}) => {
                                value={value}
                                onChange={onChange}
                         />
-                        <button type="button" onClick={getDoneList}>
+                        <button type="button" onClick={() => onFilter('done')}>
                             완료
                         </button>
-                        <button type="button">
+                        <button type="button" onClick={() => onFilter('undone')}>
                             미완료
                         </button>
                         <button type="button">

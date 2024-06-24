@@ -41,7 +41,7 @@ const TodoHead = () => {
     });
     const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long'});
 
-    console.log(dateString, dayName);
+    // console.log(dateString, dayName);
 
     return (
         <TodoHeadBlock>
